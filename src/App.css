@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:wght@300;400;700");
+
+html,
+body {
+  background-color: rgb(1, 13, 36);
+  color: white;
+  font-family: "Barlow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  object-fit: cover;
+  height: 60px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.intro h1 {
+  font-size: 52px;
+  text-shadow: 3px 3px #ff0000;
+}
+.intro p {
+  font-size: 24px;
+}
+.intro div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* == landing page */
+.landing_page {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 4rem;
+}
+
+.btn {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 50px;
+  width: 200px;
+  border-radius: 0.4rem;
+  background-color: red;
+  font-family: "Audiowide", sans-serif;
+}
+.btn:hover {
+  border: 0.3rem solid black;
+  box-shadow: 1px 1px 10px 5px rgb(158, 117, 117);
+  cursor: pointer;
+  rotate: -5deg;
+  transition: rotate 0.5s ease;
+}
+
+/* == intro navbar */
+.nav_bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.nav_bar img {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.profile {
+  border-radius: 50%;
+}
+
+/* == app image */
+.app_img {
+  max-width: 400px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+main {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
+}
+
+/* ======= Main application styles ========*/
+h2 {
+  font-size: 32px;
+}
+header {
+  width: 80%;
+  max-width: 500px;
+  margin: 2rem auto 0 auto;
+  padding: 1rem;
+  border: 1px solid rgba(156, 156, 156, 0.733);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+header h3 {
+  text-transform: uppercase;
+  align-self: center;
+}
+header section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+header div {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(39, 39, 39);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+header p {
+  font-size: 18px;
+  font-weight: bold;
+  color: blue;
+}
+.colon {
+  font-size: 40px;
+  color: white;
+}
+.game {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.game section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.option {
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  border-radius: 50%;
+  border-width: 2rem;
+  border-style: solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game div:hover {
+  height: 210px;
+  width: 210px;
+}
+.rock {
+  border-color: hsl(240, 82%, 57%);
+}
+.paper {
+  border-color: hsl(24, 84%, 52%);
+}
+.scissors {
+  justify-self: center;
+  border-color: hsl(0, 97%, 65%);
+}
+
+/*===== selection =====*/
+.selection_container {
+  margin-top: 10em;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
+.selection {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selection_container section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+  header div{
+    padding: 0 0.1rem;
+  }
+  header p {
+    font-size: 16px;
+  }
+
+  /* ===== game ===== */
+  .game {
+    margin-top: 10rem;
+  }
+  .game div {
+    height: 150px;
+    width: 150px;
+    border-width: 1.5rem;
+  }
+  .game div:hover {
+    height: 155px;
+    width: 155px;
+  }
+
+  /* ====== awaiting result ====== */
+  .selection_container {
+    gap: 3rem;
+  }
+  .selection {
+    height: 100px;
+    width: 100px;
+    border-width: 1.5rem;
+  }
+}
