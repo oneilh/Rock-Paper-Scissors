@@ -3,6 +3,7 @@ import rock from "./assets/fist-svgrepo-com.svg";
 import paper from "./assets/hand-svgrepo-com.svg";
 import scissors from "./assets/two-fingers-svgrepo-com.svg";
 
+
 const Game = () => {
   return (
     <main className="game">

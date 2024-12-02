@@ -4,18 +4,31 @@ import ScoreBoard from "./ScoreBoard";
 
 import Game from "./Game";
 import AwaitingResult from "./AwaitingResult";
+import { useState } from "react";
 
 function App() {
-  return (
-    // <>
-    //   <ScoreBoard />
-    //   {/* <Game /> */}
-    //   {/* <AwaitingResult/> */}
-    // </>
-    <main>
+  const [start, setStart] = useState(false);
 
-      <Intro/>
-    </main>
+  // if (start) {
+  //   return (
+  //     <>
+  //       <ScoreBoard />
+  //       <Game />
+  //     </>
+  //   );
+  // }
+  return (
+    <>
+      {start ? (
+        <>
+          {" "}
+          <ScoreBoard /> <Game />
+        </>
+      ) : (
+        <Intro gamestart={setStart} />
+      )}
+      {/* <AwaitingResult/> */}
+    </>
   );
 }
 

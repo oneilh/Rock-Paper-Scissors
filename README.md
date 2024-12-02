@@ -8,4 +8,4 @@ Cybite's incourse project for frontend students.
 - javascript
 - react
   
-[see Project UI adataption](https://dribbble.com/shots/13946587-Rock-Paper-Scissors-game)
+[see Project UI adaption](https://dribbble.com/shots/13946587-Rock-Paper-Scissors-game)
