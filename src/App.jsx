@@ -13,23 +13,13 @@ import { useReducer } from "react";
 function App() {
   const [appState, dispatch] = useReducer(reducer, initialState);
   return (
-    <>
-      <AppContext.Provider value={{ appState, dispatch }}>
-        <Routes>
-          <Route path="/" element={<Intro />} />
-          <Route path="register" element={<Form />} />
-          <Route path="game" element={<Game />} />
-        </Routes>
-      </AppContext.Provider>
-      {/* {start ? (
-        <>
-          <ScoreBoard /> <Game />
-        </>
-      ) : (
-        <Intro gamestart={setStart} />
-      )} */}
-      {/* <AwaitingResult/> */}
-    </>
+    <AppContext.Provider value={{ appState, dispatch }}>
+      <Routes>
+        <Route path="/" element={<Intro />} />
+        <Route path="register" element={<Form />} />
+        <Route path="game" element={<Game />} />
+      </Routes>
+    </AppContext.Provider>
   );
 }
 

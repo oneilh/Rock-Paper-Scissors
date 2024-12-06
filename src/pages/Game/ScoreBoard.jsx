@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { AppContext } from "../../context/AppContext";
 
 const ScoreBoard = () => {
-  const {appState} = useContext(AppContext);
-  const {playerName, playerScore, computerScore}= appState;
+  const { appState } = useContext(AppContext);
+  const { playerName, playerScore, computerScore } = appState;
   return (
     <header>
       <h3>
