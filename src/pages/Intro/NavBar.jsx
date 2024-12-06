@@ -1,6 +1,6 @@
 import React from "react";
-import profileImage from "./assets/vecteezy_portrait-of-a-beautiful-girl-face-side-view-wearing-a-flat_16127643-1.jpg";
-import settings from "./assets/settings-svgrepo-com.svg";
+import profileImage from "./../../assets/profile_pic1.jpg";
+import settings from "./../../assets/settings-svgrepo-com.svg";
 
 
 const NavBar = () => {

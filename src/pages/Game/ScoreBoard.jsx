@@ -1,6 +1,9 @@
-import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 const ScoreBoard = () => {
+  const {appState} = useContext(AppContext);
+  const {playerName, playerScore, computerScore}= appState;
   return (
     <header>
       <h3>
@@ -8,13 +11,13 @@ const ScoreBoard = () => {
       </h3>
       <section>
         <div className="player">
-          <p>Player</p>
-          <h2>4</h2>
+          <p>{playerName}</p>
+          <h2>{playerScore}</h2>
         </div>
         <p className="colon">:</p>
         <div className="computer">
-          <p>Computer</p>
-          <h2>1</h2>
+          <p>COMP.</p>
+          <h2>{computerScore}</h2>
         </div>
       </section>
     </header>

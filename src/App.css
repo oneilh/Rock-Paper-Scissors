@@ -10,60 +10,17 @@ body {
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+}
 * {
   margin: 0;
   padding: 0;
 }
-img {
-  object-fit: cover;
-  height: 60px;
-}
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.intro h1 {
-  font-size: 52px;
-  text-shadow: 3px 3px #ff0000;
-}
-.intro p {
-  font-size: 24px;
-}
-.intro div {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* == landing page */
-.landing_page {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 4rem;
-}
-
-.btn {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  height: 50px;
-  width: 200px;
-  border-radius: 0.4rem;
-  background-color: red;
-  font-family: "Audiowide", sans-serif;
-}
-.btn:hover {
-  border: 0.3rem solid black;
-  box-shadow: 1px 1px 10px 5px rgb(158, 117, 117);
-  cursor: pointer;
-  rotate: -5deg;
-  transition: rotate 0.5s ease;
+h1,
+h2 {
+  font-weight: 700;
 }
 
 /* == intro navbar */
@@ -81,11 +38,58 @@ img {
   border-radius: 50%;
 }
 
-/* == app image */
+/* == Intro */
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.intro h1 {
+  font-size: 52px;
+  text-shadow: 3px 3px #ff0000;
+}
+.intro p {
+  font-size: 24px;
+}
+.intro div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .app_img {
   max-width: 400px;
   width: 70%;
   margin: 0 auto;
+}
+
+.landing_page {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 4rem;
+}
+
+.btn {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 50px;
+  width: 200px;
+  border-radius: 0.4rem;
+  color: white;
+  background-color: red;
+  font-family: "Audiowide", sans-serif;
+}
+.btn:hover {
+  border: 0.3rem solid black;
+  box-shadow: 1px 1px 10px 5px rgb(158, 117, 117);
+  cursor: pointer;
+  rotate: -5deg;
+  transition: rotate 0.5s ease;
+  text-decoration: underline;
 }
 
 main {
@@ -95,7 +99,9 @@ main {
 }
 
 /* ======= Main application styles ========*/
-h2 {
+
+/* scoreboard */
+header h2 {
   font-size: 32px;
 }
 header {
@@ -132,41 +138,46 @@ header div {
 }
 header p {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   color: blue;
 }
 .colon {
   font-size: 40px;
   color: white;
 }
+
+/* game */
 .game {
-  display: grid;
-  grid-template-columns: 1fr;
   margin-top: 7rem;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.game section {
+.rocknpaper {
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
 
 .option {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   background-color: white;
   border-radius: 50%;
-  border-width: 2rem;
+  border-width: 1.5rem;
   border-style: solid;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.game div:hover {
-  height: 210px;
-  width: 210px;
+.option:hover {
+  height: 190px;
+  width: 190px;
+}
+.option img {
+  object-fit: cover;
+  height: 80px;
 }
 .rock {
   border-color: hsl(240, 82%, 57%);
@@ -175,62 +186,184 @@ header p {
   border-color: hsl(24, 84%, 52%);
 }
 .scissors {
-  justify-self: center;
+  align-self: center;
   border-color: hsl(0, 97%, 65%);
 }
 
-/*===== selection =====*/
+/*===== Awaiting result =====*/
+.result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 .selection_container {
-  margin-top: 10em;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
   gap: 6rem;
 }
-.selection {
-  height: 200px;
-  width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.selection_container .option:hover {
+  height: 180px;
+  width: 180px;
 }
-
 .selection_container section {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
   text-align: center;
 }
+.selection {
+  display: flex;
+}
+
+.decision {
+  align-self: center;
+}
+.decision h2 {
+  font-size: 32px;
+}
+.action-btn {
+  background-color: white;
+  color: black;
+  padding: 1rem 1.5rem;
+  font-weight: 300;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+.quit {
+  color: red;
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.quit-lg{
+  align-self: flex-start;
+  text-decoration: underline;
+}
+
+.decision-mobile {
+  display: none;
+}
+
+/* == form styles */
+.register {
+  width: 40%;
+  margin: 0 auto;
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.register a {
+  align-self: flex-start;
+  color: red;
+  text-decoration: underline;
+}
+.userName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.userName fieldset {
+  border-radius: 0.5rem;
+  padding: 0 0.4rem;
+  width: 200px;
+}
+.userName legend {
+  letter-spacing: 0.1ch;
+  padding: 0 0.5rem;
+}
+.userName input {
+  background-color: transparent;
+  border: 0;
+  padding: 1rem;
+  color: red;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.userName input:focus {
+  outline: 0;
+}
+.userName button {
+  width: 40%;
+  max-width: 100px;
+  padding: 0.3rem 0;
+  background-color: red;
+  color: white;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
 
 @media only screen and (max-width: 720px) {
-  header div{
+  header div {
     padding: 0 0.1rem;
   }
   header p {
     font-size: 16px;
   }
-
-  /* ===== game ===== */
+  /* ======= Main application styles ========*/
+  /* game */
   .game {
     margin-top: 10rem;
   }
-  .game div {
-    height: 150px;
-    width: 150px;
-    border-width: 1.5rem;
+  .option {
+    height: 110px;
+    width: 110px;
+    border-width: 1rem;
   }
-  .game div:hover {
-    height: 155px;
-    width: 155px;
+  .option:hover {
+    height: 120px;
+    width: 120px;
   }
 
   /* ====== awaiting result ====== */
   .selection_container {
     gap: 3rem;
+    justify-content: space-between;
   }
-  .selection {
-    height: 100px;
-    width: 100px;
-    border-width: 1.5rem;
+  .selection_container section {
+    flex-direction: column-reverse;
+  }
+  .selection_container .decision {
+    display: none;
+    background-color: red;
+  }
+  .selection_container .option:hover {
+    height: 110px;
+    width: 110px;
+  }
+  
+
+  /* decision mobile */
+  .decision-mobile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .decision {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .decision h2 {
+    font-size: 48px;
+  }
+
+  .quit:hover {
+    text-decoration: underline;
+  }
+  .quit-lg{
+    display: none;
+  }
+
+  /* ==form styles */
+  .register {
+    width: 90%;
   }
 }
