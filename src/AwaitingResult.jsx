@@ -65,9 +65,9 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         </section>
       </section>
 
-      <div className="quit quit-lg selection_container" onClick={handleReset}>
+      <Link to='/' className="quit quit-lg selection_container" onClick={handleReset}>
         QUIT
-      </div>
+      </Link>
 
       {/* decision view for mobile */}
       <section className="decision-mobile">
