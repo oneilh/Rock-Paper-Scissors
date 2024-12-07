@@ -6,7 +6,7 @@ import GameSelection from "./GameSelection";
 import ScoreBoard from "./ScoreBoard";
 
 const Game = () => {
-  const { dispatch } = useContext(AppContext);
+  const { dispatch} = useContext(AppContext);
   const [showResultBoard, setShowResultBoard] = useState(false);
 
   const [pick, setPick] = useState({
@@ -32,17 +32,17 @@ const Game = () => {
   useEffect(() => {
     if (player && computer) {
       if (player === computer) {
-        console.log("Draw");
+        // console.log("Draw");
         dispatch({ type: "DRAW" });
       } else if (
         (player === "rock" && computer === "scissors") ||
         (player === "scissors" && computer === "paper") ||
         (player === "paper" && computer === "rock")
       ) {
-        console.log("Player wins");
+        // console.log("Player wins");
         dispatch({ type: "PLAYERWIN" });
       } else {
-        console.log("Computer wins");
+        // console.log("Computer wins");
         dispatch({ type: "COMPUTERWIN" });
       }
       setShowResultBoard(!showResultBoard);
@@ -53,7 +53,11 @@ const Game = () => {
     <>
       <ScoreBoard />
       {showResultBoard ? (
-        <AwaitingResult pick={pick}/>
+        <AwaitingResult
+          pick={pick}
+          setShowResultBoard={setShowResultBoard}
+          showResultBoard={showResultBoard}
+        />
       ) : (
         <GameSelection playerPick={handlePlayerPick} />
       )}

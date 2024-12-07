@@ -316,13 +316,13 @@ header p {
     margin-top: 10rem;
   }
   .option {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-width: 1rem;
   }
   .option:hover {
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
   }
 
   /* ====== awaiting result ====== */
@@ -338,8 +338,8 @@ header p {
     background-color: red;
   }
   .selection_container .option:hover {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
   }
 
   /* decision mobile */
