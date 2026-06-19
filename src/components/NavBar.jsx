@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import profileImage from "./../assets/profile_pic1.jpg";
 import { FaCog } from "react-icons/fa";
+import { AppContext } from "../context/AppContext";
 
 const NavBar = () => {
+  const { appState } = useContext(AppContext);
+  
   return (
     <section className="nav_bar">
-      <img src={profileImage} alt="Profile" className="profile" />
-      <FaCog className="settings-icon" size={32} color="#0055ff" style={{ cursor: "pointer" }} />
+      <div className="nav-profile-group">
+        <img src={profileImage} alt="Profile" className="profile" />
+        <span className="nav-username">{appState?.playerName || "Guest"}</span>
+      </div>
+
+      <FaCog className="settings-icon" size={28} color="var(--accent-cyan)" style={{ cursor: "pointer" }} />
     </section>
   );
 };

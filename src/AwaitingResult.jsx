@@ -37,7 +37,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
       <section className="selection_container">
         <section className="selection">
           <h3>You Picked</h3>
-          <div className={`option ${player}`} style={{ fontSize: "5rem" }}>
+          <div className={`option ${player}`}>
             {optionsMap[player]}
           </div>
         </section>
@@ -55,7 +55,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         {/* selection-> computer */}
         <section className="selection">
           <h3>Computer Picked</h3>
-          <div className={`option ${computer}`} style={{ fontSize: "5rem" }}>
+          <div className={`option ${computer}`}>
             {optionsMap[computer]}
           </div>
         </section>
