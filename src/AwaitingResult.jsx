@@ -3,11 +3,11 @@ import { AppContext } from "./context/AppContext";
 
 import { Link } from "react-router";
 
-const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard, resultAction }) => {
+const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard, resultAction, instantMode }) => {
   const { appState, dispatch } = useContext(AppContext);
   const { roundResult, roundStatus, playerScore, computerScore } = appState;
 
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(instantMode ? 0 : 3);
   const [isRevealed, setIsRevealed] = useState(false);
 
   const targetWins = Math.ceil((appState.series || 5) / 2);
@@ -20,6 +20,12 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard, resultActio
     paper: "✋",
     scissors: "✌️",
   };
+
+  useEffect(() => {
+    if (instantMode && countdown > 0) {
+      setCountdown(0);
+    }
+  }, [instantMode, countdown]);
 
   useEffect(() => {
     if (countdown > 0) {
