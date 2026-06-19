@@ -6,7 +6,7 @@ Here is a list of improvements that can be made to the Rock-Paper-Scissors game,
 *   **Modern Form Styling:** Upgrade the `/register` form from basic HTML `<fieldset>` to modern, styled inputs (e.g., floating labels, glowing focus rings).
 *   **Visual Assets:** Use high-quality icons, SVGs, or emojis for the Rock, Paper, and Scissors choices instead of plain text/buttons.
 *   **Animations:** Add micro-animations (like a slight scale-up on hover for choices) and smooth page transitions when navigating between Intro, Form, and Game pages.
-*   **Result Highlighting:** Make the winner obvious visually (e.g., green glowing border for the winner, grayed out for the loser).
+*   [x] **Result Highlighting:** Make the winner obvious visually (e.g., green glowing border for the winner, grayed out for the loser).
 
 ### 2. UX (User Experience)
 *   **Input Validation:** Prevent users from submitting an empty name in the registration form. Show a friendly error message if they try to proceed without typing anything.

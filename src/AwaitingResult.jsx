@@ -31,13 +31,16 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   const handleReset = ()=>{
     dispatch({type: "RESET"})
   }
+  const isPlayerWin = roundResult.includes("You Win");
+  const isComputerWin = roundResult.includes("Computer Win");
+
   return (
     <main className="result-container">
       {/* selection-> player */}
       <section className="selection_container">
         <section className="selection">
           <h3>You Picked</h3>
-          <div className={`option ${player}`}>
+          <div className={`option ${player} ${isPlayerWin ? 'winner-glow' : ''} ${isComputerWin ? 'loser-dim' : ''}`}>
             {optionsMap[player]}
           </div>
         </section>
@@ -46,7 +49,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         <section className="decision">
           <h2>{roundResult}</h2>
           {seriesScore === 5 ? (
-            <div className="action-btn">PLAY AGAIN</div>
+            <div className="action-btn" onClick={handleReset}>PLAY AGAIN</div>
           ) : (
             <p>Next Round ⚔ in 3 seconds...</p>
           )}
@@ -55,7 +58,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         {/* selection-> computer */}
         <section className="selection">
           <h3>Computer Picked</h3>
-          <div className={`option ${computer}`}>
+          <div className={`option ${computer} ${isComputerWin ? 'winner-glow' : ''} ${isPlayerWin ? 'loser-dim' : ''}`}>
             {optionsMap[computer]}
           </div>
         </section>

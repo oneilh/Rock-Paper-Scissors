@@ -340,6 +340,21 @@ header p {
   flex-direction: column;
   gap: 2rem;
 }
+
+.winner-glow {
+  background: rgba(0, 255, 100, 0.2) !important;
+  border-color: rgba(0, 255, 100, 0.5) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 30px rgba(0, 255, 100, 0.5) !important;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 100, 0.5)) !important;
+  z-index: 10;
+}
+
+.loser-dim {
+  filter: grayscale(100%) opacity(30%) !important;
+  transform: scale(0.85) !important;
+}
+
 .selection_container {
   margin-top: 5rem;
   display: flex;
