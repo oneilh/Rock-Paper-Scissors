@@ -3,9 +3,12 @@ import { AppContext } from "./context/AppContext";
 
 import { Link } from "react-router";
 
-const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
+const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard, resultAction }) => {
   const { appState, dispatch } = useContext(AppContext);
   const { roundResult, roundStatus, playerScore, computerScore } = appState;
+
+  const [countdown, setCountdown] = useState(3);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   const isGameOver =
     playerScore === 5 ||
@@ -21,24 +24,33 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   };
 
   useEffect(() => {
-    if(isGameOver){
-      return
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (!isRevealed) {
+      setIsRevealed(true);
+      if (resultAction) {
+        dispatch({ type: resultAction });
+      }
     }
-    // Set a timer for 3 seconds
-    const timer = setTimeout(() => {
-      setShowResultBoard(!showResultBoard); // Update the message after 3 seconds
-    }, 3000);
+  }, [countdown, isRevealed, dispatch, resultAction]);
 
-    // Cleanup function to clear the timer if the component unmounts
-    return () => clearTimeout(timer);
-  }, [player, computer, isGameOver, setShowResultBoard, showResultBoard]); // Include missing dependencies
+  useEffect(() => {
+    if (isRevealed && !isGameOver) {
+      const timer = setTimeout(() => {
+        setShowResultBoard(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isRevealed, isGameOver, setShowResultBoard]);
 
   const handleReset = ()=>{
     dispatch({type: "RESET"})
   }
-  const isPlayerWin = roundStatus === "PLAYER_WIN";
-  const isComputerWin = roundStatus === "COMPUTER_WIN";
-  const isDraw = roundStatus === "DRAW";
+  
+  const isPlayerWin = isRevealed && roundStatus === "PLAYER_WIN";
+  const isComputerWin = isRevealed && roundStatus === "COMPUTER_WIN";
+  const isDraw = isRevealed && roundStatus === "DRAW";
 
   return (
     <main className="result-container">
@@ -55,11 +67,15 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
 
         {/* decision view for larger screen */}
         <section className="decision">
-          <h2>{roundResult}</h2>
-          {isGameOver ? (
+          <h2 style={{ fontSize: isRevealed ? '32px' : '48px' }}>
+            {isRevealed ? roundResult : `${countdown}...`}
+          </h2>
+          {isRevealed && isGameOver ? (
             <div className="action-btn" onClick={handleReset}>PLAY AGAIN</div>
-          ) : (
+          ) : isRevealed ? (
             <p>Next Round ⚔ in 3 seconds...</p>
+          ) : (
+            <p>Wait for it...</p>
           )}
         </section>
 
@@ -67,8 +83,8 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         <section className="selection">
           <h3>Computer Picked</h3>
           <div className={`glass-btn ${isComputerWin ? 'winner-glow' : ''} ${isPlayerWin ? 'loser-dim' : ''} ${isDraw ? 'draw-glow' : ''}`}>
-            <div className={`option ${computer}`}>
-              {optionsMap[computer]}
+            <div className={`option ${isRevealed ? computer : ''}`}>
+              {isRevealed ? optionsMap[computer] : "❓"}
             </div>
           </div>
         </section>
@@ -81,14 +97,20 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
       {/* decision view for mobile */}
       <section className="decision-mobile">
         <section className="decision">
-          <h2>{roundResult}</h2>
-          {isGameOver ? (
+          <h2 style={{ fontSize: isRevealed ? '32px' : '48px' }}>
+            {isRevealed ? roundResult : `${countdown}...`}
+          </h2>
+          {isRevealed && isGameOver ? (
             <div className="action-btn" onClick={handleReset}>
               PLAY AGAIN
             </div>
-          ) : (
+          ) : isRevealed ? (
             <div>
               <p>Next Round ⚔ in 3 seconds...</p>
+            </div>
+          ) : (
+            <div>
+              <p>Wait for it...</p>
             </div>
           )}
         </section>

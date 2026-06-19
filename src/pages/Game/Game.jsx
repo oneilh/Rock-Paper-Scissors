@@ -19,7 +19,9 @@ const Game = () => {
   const { player, computer } = pick;
   const options = Object.values(WEAPONS);
 
-  // Generate computer's pick and determine winner immediately
+  const [resultAction, setResultAction] = useState("");
+
+  // Generate computer's pick and determine winner
   const handlePlayerPick = (playerSelection) => {
     const computerSelection =
       options[Math.floor(Math.random() * options.length)];
@@ -29,9 +31,8 @@ const Game = () => {
       computer: computerSelection,
     });
 
-    const resultAction = determineWinner(playerSelection, computerSelection);
-    dispatch({ type: resultAction });
-    
+    const action = determineWinner(playerSelection, computerSelection);
+    setResultAction(action);
     setShowResultBoard(true);
   };
 
@@ -43,6 +44,7 @@ const Game = () => {
           pick={pick}
           setShowResultBoard={setShowResultBoard}
           showResultBoard={showResultBoard}
+          resultAction={resultAction}
         />
       ) : (
         <GameSelection playerPick={handlePlayerPick} />

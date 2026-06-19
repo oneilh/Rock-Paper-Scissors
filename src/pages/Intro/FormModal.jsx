@@ -5,15 +5,22 @@ import { AppContext } from "../../context/AppContext";
 const FormModal = ({ onClose }) => {
   const { dispatch } = useContext(AppContext);
   const [playerName, setPlayerName] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const handlePlayerName = (e) => {
     setPlayerName(e.target.value);
+    if (e.target.value.trim() !== "") {
+      setErrorMsg("");
+    }
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (playerName.trim() === "") return;
+    if (playerName.trim() === "") {
+      setErrorMsg("Please enter a valid player name to continue.");
+      return;
+    }
     dispatch({ type: "PLAYERNAME", payload: playerName });
     navigate("/game");
   };
@@ -33,6 +40,7 @@ const FormModal = ({ onClose }) => {
               autoFocus
               required
             />
+            {errorMsg && <p style={{ color: 'var(--accent-pink)', marginTop: '10px', fontSize: '14px', textTransform: 'none' }}>{errorMsg}</p>}
           </fieldset>
           <button type="submit">Enter</button>
         </form>

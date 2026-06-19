@@ -7,10 +7,27 @@ import { Route, Routes } from "react-router";
 import { AppContext } from "./context/AppContext";
 
 import { initialState, reducer } from "./utils/reducer";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
+
+const init = (initialValue) => {
+  try {
+    const stored = localStorage.getItem("rpsGameState");
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (e) {
+    console.error("Failed to load state", e);
+  }
+  return initialValue;
+};
 
 function App() {
-  const [appState, dispatch] = useReducer(reducer, initialState);
+  const [appState, dispatch] = useReducer(reducer, initialState, init);
+
+  useEffect(() => {
+    localStorage.setItem("rpsGameState", JSON.stringify(appState));
+  }, [appState]);
+
   return (
     <AppContext.Provider value={{ appState, dispatch }}>
       <Routes>

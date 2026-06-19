@@ -9,9 +9,9 @@ Here is a list of improvements that can be made to the Rock-Paper-Scissors game,
 *   [x] **Result Highlighting:** Make the winner obvious visually (e.g., green glowing border for the winner, grayed out for the loser).
 
 ### 2. UX (User Experience)
-*   **Input Validation:** Prevent users from submitting an empty name in the registration form. Show a friendly error message if they try to proceed without typing anything.
-*   **State Persistence:** Save the player's name and current score in `localStorage`. If they accidentally refresh the page, they won't lose their progress.
-*   **Suspense Building:** Instead of instantly showing the result, add a brief delay or a "3... 2... 1..." animation before revealing the computer's choice.
+*   [x] **Input Validation:** Prevent users from submitting an empty name in the registration form. Show a friendly error message if they try to proceed without typing anything.
+*   [x] **State Persistence:** Save the player's name and current score in `localStorage`. If they accidentally refresh the page, they won't lose their progress.
+*   [x] **Suspense Building:** Instead of instantly showing the result, add a brief delay or a "3... 2... 1..." animation before revealing the computer's choice.
 *   **Audio Feedback:** Add subtle, satisfying sound effects for clicking, winning, losing, and drawing.
 
 ### 3. User Flow
