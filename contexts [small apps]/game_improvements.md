@@ -16,7 +16,7 @@ Here is a list of improvements that can be made to the Rock-Paper-Scissors game,
 
 ### 3. User Flow
 *   **Smart Onboarding:** If a user's name is already saved in `localStorage`, skip the `/register` screen and take them straight to the `/game` to reduce friction.
-*   **In-Game Controls:** Add a "Change Player" or "Reset Score" button directly inside the game view so they don't get stuck without a way to start over.
+*   [x] **In-Game Controls:** Add a "Change Player" or "Reset Score" button directly inside the game view so they don't get stuck without a way to start over.
 *   **Fluid "Play Again":** Ensure that after a round concludes, the transition back to picking a new weapon is seamless and requires minimal clicks.
 
 ### 4. Code Quality & Architecture
