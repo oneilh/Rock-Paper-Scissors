@@ -1,11 +1,12 @@
 import { ACTIONS } from "./constants";
 
 export const initialState = {
-  playerName: "Guest001",
+  playerName: "",
   playerScore: 0,
   computerScore: 0,
   roundResult: "",
   roundStatus: "",
+  series: 5,
 };
 
 export const reducer = (state, action) => {
@@ -31,6 +32,24 @@ export const reducer = (state, action) => {
     case ACTIONS.RESET:
       return {
         ...state,
+        playerScore: 0,
+        computerScore: 0,
+        roundResult: "",
+        roundStatus: "",
+      };
+    case ACTIONS.CHANGE_USER:
+      return {
+        ...state,
+        playerName: "",
+        playerScore: 0,
+        computerScore: 0,
+        roundResult: "",
+        roundStatus: "",
+      };
+    case ACTIONS.SET_SERIES:
+      return {
+        ...state,
+        series: action.payload,
         playerScore: 0,
         computerScore: 0,
         roundResult: "",

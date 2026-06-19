@@ -16,7 +16,7 @@ const NavBar = () => {
   };
 
   const handleChangePlayer = () => {
-    dispatch({ type: ACTIONS.RESET });
+    dispatch({ type: ACTIONS.CHANGE_USER });
     setIsSettingsOpen(false);
     navigate("/");
   };
@@ -33,8 +33,14 @@ const NavBar = () => {
           className="settings-icon"
           size={28}
           color="var(--accent-cyan)"
-          style={{ cursor: "pointer" }}
-          onClick={() => setIsSettingsOpen(true)}
+          style={{ 
+            cursor: appState?.playerName ? "pointer" : "not-allowed",
+            opacity: appState?.playerName ? 1 : 0.3
+          }}
+          onClick={() => {
+            if (appState?.playerName) setIsSettingsOpen(true);
+          }}
+          title={!appState?.playerName ? "Settings unavailable for guests" : "Settings"}
         />
       </section>
 
@@ -53,7 +59,7 @@ const NavBar = () => {
               style={{ width: '100%', padding: '0.8rem 0', backgroundColor: 'transparent', color: 'var(--accent-cyan)', border: '2px solid var(--accent-cyan)', borderRadius: '0.4rem', cursor: 'pointer', fontSize: '18px', fontWeight: '700' }}
               onClick={handleChangePlayer}
             >
-              Change Player
+              Change Username
             </button>
           </div>
         </div>

@@ -10,10 +10,8 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard, resultActio
   const [countdown, setCountdown] = useState(3);
   const [isRevealed, setIsRevealed] = useState(false);
 
-  const isGameOver =
-    playerScore === 5 ||
-    computerScore === 5 ||
-    Math.abs(playerScore - computerScore) >= 3;
+  const targetWins = Math.ceil((appState.series || 5) / 2);
+  const isGameOver = playerScore === targetWins || computerScore === targetWins;
 
   const { player, computer } = pick;
   // Map choices to their corresponding images
