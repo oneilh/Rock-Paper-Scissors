@@ -5,7 +5,12 @@ import { Link } from "react-router";
 
 const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   const { appState, dispatch } = useContext(AppContext);
-  const { roundResult, seriesScore } = appState;
+  const { roundResult, roundStatus, playerScore, computerScore } = appState;
+
+  const isGameOver =
+    playerScore === 5 ||
+    computerScore === 5 ||
+    Math.abs(playerScore - computerScore) >= 3;
 
   const { player, computer } = pick;
   // Map choices to their corresponding images
@@ -16,7 +21,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   };
 
   useEffect(() => {
-    if(seriesScore === 5){
+    if(isGameOver){
       return
     }
     // Set a timer for 3 seconds
@@ -26,14 +31,14 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
 
     // Cleanup function to clear the timer if the component unmounts
     return () => clearTimeout(timer);
-  }, [player, computer]); // Empty dependency array ensures this runs only once
+  }, [player, computer, isGameOver, setShowResultBoard, showResultBoard]); // Include missing dependencies
 
   const handleReset = ()=>{
     dispatch({type: "RESET"})
   }
-  const isPlayerWin = roundResult.includes("You Win");
-  const isComputerWin = roundResult.includes("Computer Win");
-  const isDraw = roundResult.includes("Draw");
+  const isPlayerWin = roundStatus === "PLAYER_WIN";
+  const isComputerWin = roundStatus === "COMPUTER_WIN";
+  const isDraw = roundStatus === "DRAW";
 
   return (
     <main className="result-container">
@@ -51,7 +56,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         {/* decision view for larger screen */}
         <section className="decision">
           <h2>{roundResult}</h2>
-          {seriesScore === 5 ? (
+          {isGameOver ? (
             <div className="action-btn" onClick={handleReset}>PLAY AGAIN</div>
           ) : (
             <p>Next Round ⚔ in 3 seconds...</p>
@@ -77,7 +82,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
       <section className="decision-mobile">
         <section className="decision">
           <h2>{roundResult}</h2>
-          {seriesScore === 5 ? (
+          {isGameOver ? (
             <div className="action-btn" onClick={handleReset}>
               PLAY AGAIN
             </div>

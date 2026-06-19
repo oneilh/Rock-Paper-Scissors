@@ -4,30 +4,28 @@ export const initialState = {
   playerName: "Guest001",
   playerScore: 0,
   computerScore: 0,
-  seriesScore: 0,
   roundResult: "",
+  roundStatus: "",
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.DRAW:
-      return { ...state, roundResult: "It's a Draw 🤝" };
+      return { ...state, roundStatus: "DRAW", roundResult: "It's a Draw 🤝" };
     case ACTIONS.PLAYERNAME:
       return { ...state, playerName: action.payload.toUpperCase() };
     case ACTIONS.PLAYERWIN:
-      const updatedPlayerScore = state.playerScore + 1;
       return {
         ...state,
-        playerScore: updatedPlayerScore,
-        seriesScore: updatedPlayerScore + state.computerScore,
+        playerScore: state.playerScore + 1,
+        roundStatus: "PLAYER_WIN",
         roundResult: "You Win 😎",
       };
     case ACTIONS.COMPUTERWIN:
-      const updatedComputerScore = state.computerScore + 1;
       return {
         ...state,
-        computerScore: updatedComputerScore,
-        seriesScore: state.playerScore + updatedComputerScore,
+        computerScore: state.computerScore + 1,
+        roundStatus: "COMPUTER_WIN",
         roundResult: "Computer Win 😔",
       };
     case ACTIONS.RESET:
@@ -35,7 +33,8 @@ export const reducer = (state, action) => {
         ...state,
         playerScore: 0,
         computerScore: 0,
-        seriesScore: 0,
+        roundResult: "",
+        roundStatus: "",
       };
     default:
       return state;
