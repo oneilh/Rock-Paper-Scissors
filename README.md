@@ -11,7 +11,11 @@ This project is an incourse frontend application demonstrating core React concep
 <details>
 <summary><b>📷 Screenshots</b></summary>
 <br/>
-<i>(Add project screenshots here)</i>
+<img src="./screenshots/image.png" alt="Screenshot 1" width="400"/>
+<img src="./screenshots/image copy.png" alt="Screenshot 2" width="400"/>
+<img src="./screenshots/image copy 2.png" alt="Screenshot 3" width="400"/>
+<img src="./screenshots/image copy 3.png" alt="Screenshot 4" width="400"/>
+<img src="./screenshots/image copy 4.png" alt="Screenshot 5" width="400"/>
 </details>
 
 ## ✨ Key Features

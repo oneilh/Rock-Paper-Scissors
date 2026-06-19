@@ -1,0 +1,34 @@
+{
+  "id": "mini-2",
+  "name": "Rock Paper Scissors",
+  "description": "A modern, interactive frontend implementation of the classic game built with React.",
+  "image": "/screenshots/image.png",
+  "githubUrl": "#",
+  "liveUrl": "#",
+  "tags": [
+    "React",
+    "CSS",
+    "Vite"
+  ],
+  "featured": false,
+  "details": {
+    "overview": "This application delivers a highly responsive, interactive gaming experience powered by a clean React component architecture. Leveraging Vite for optimized builds and lightning-fast HMR, it ensures a production-grade UI layer with robust client-side state management.",
+    "features": [
+      "Frictionless Interactive Gameplay",
+      "Seamless Cross-Device Responsiveness",
+      "Real-time Persistent Score Tracking"
+    ],
+    "technicalHighlights": [
+      "Architected modular React components leveraging custom hooks for decoupled game logic and state synchronization.",
+      "Optimized frontend bundle performance and development velocity utilizing Vite's build pipeline.",
+      "Engineered scalable, performant styles using raw CSS without heavy framework overhead."
+    ],
+    "gallery": [
+      "/screenshots/image.png",
+      "/screenshots/image copy.png",
+      "/screenshots/image copy 2.png",
+      "/screenshots/image copy 3.png",
+      "/screenshots/image copy 4.png"
+    ]
+  }
+}
