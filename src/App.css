@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:wght@300;400;700");
 
+:root {
+  --bg-deep-void: rgb(1, 13, 36);
+  --accent-pink: #FF007F;
+  --accent-cyan: #00E5FF;
+
+  --accent-yellow: #FFD700;
+  --text-muted: #8892B0;
+}
+
 html,
 body {
-  background-color: rgb(1, 13, 36);
+  background-color: var(--bg-deep-void);
   color: white;
   font-family: "Barlow", system-ui;
   font-weight: 400;
@@ -46,10 +55,11 @@ h2 {
 }
 .intro h1 {
   font-size: 52px;
-  text-shadow: 3px 3px #ff0000;
+  text-shadow: 3px 3px var(--accent-pink);
 }
-.intro p {
+.subtitle {
   font-size: 24px;
+  color: var(--text-muted);
 }
 .intro div {
   display: flex;
@@ -70,26 +80,60 @@ h2 {
   gap: 4rem;
 }
 
-.btn {
-  font-size: 20px;
+@keyframes breathing-glow {
+  0% {
+    box-shadow: 0 0 5px var(--accent-pink), inset 0 0 5px var(--accent-pink);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-pink), inset 0 0 10px var(--accent-pink);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--accent-pink), inset 0 0 5px var(--accent-pink);
+  }
+}
+
+.start-btn {
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: center;
-  height: 50px;
-  width: 200px;
-  border-radius: 0.4rem;
+  height: 60px;
+  width: 240px;
+  border-radius: 0.5rem;
   color: white;
-  background-color: red;
+  background-color: transparent;
+  border: 3px solid var(--accent-pink);
   font-family: "Audiowide", sans-serif;
-}
-.btn:hover {
-  border: 0.3rem solid black;
-  box-shadow: 1px 1px 10px 5px rgb(158, 117, 117);
+  text-transform: uppercase;
+  letter-spacing: 2px;
   cursor: pointer;
-  rotate: -5deg;
-  transition: rotate 0.5s ease;
-  text-decoration: underline;
+  animation: breathing-glow 2s infinite ease-in-out;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.start-btn:hover {
+  background-color: var(--accent-pink);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent-pink), inset 0 0 15px var(--accent-pink);
+  animation: none;
+}
+
+.start-btn:focus-visible {
+  outline: 3px solid var(--accent-cyan);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-btn {
+    animation: none;
+    transition: none;
+  }
+  .start-btn:hover {
+    transform: none;
+  }
 }
 
 main {
@@ -114,16 +158,22 @@ header {
   display: flex;
   justify-content: space-between;
 }
-header h3 {
+.game-title {
+  display: flex;
+  flex-direction: column;
   text-transform: uppercase;
-  align-self: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
 }
 header section {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-header div {
+header section div {
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   color: rgb(39, 39, 39);
@@ -253,55 +303,114 @@ header p {
 }
 
 /* == form styles */
+/* == modal and form styles == */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: rgb(1, 13, 36);
+  border: 2px solid hsl(348, 100%, 61%);
+  border-radius: 10px;
+  padding: 3rem 2rem;
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0px 0px 20px 2px rgba(255, 0, 55, 0.4);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
 .register {
-  width: 40%;
-  margin: 0 auto;
-  margin: 10rem auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-.register a {
-  align-self: flex-start;
-  color: red;
-  text-decoration: underline;
-}
+
 .userName {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
+
 .userName fieldset {
   border-radius: 0.5rem;
   padding: 0 0.4rem;
-  width: 200px;
+  width: 100%;
+  border-color: hsl(348, 100%, 61%);
 }
+
 .userName legend {
   letter-spacing: 0.1ch;
   padding: 0 0.5rem;
+  color: #fff;
 }
+
 .userName input {
   background-color: transparent;
   border: 0;
   padding: 1rem;
-  color: red;
+  color: hsl(348, 100%, 61%);
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .userName input:focus {
   outline: 0;
 }
+
 .userName button {
-  width: 40%;
-  max-width: 100px;
-  padding: 0.3rem 0;
-  background-color: red;
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: hsl(348, 100%, 61%);
   color: white;
   border-radius: 0.4rem;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  transition: all 0.3s ease;
 }
+
+.userName button:hover {
+  background-color: hsl(348, 100%, 50%);
+  transform: scale(1.02);
+}
+
+.title-neon {
+  font-size: 52px;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+  color: #fff;
+}
+
 
 @media only screen and (max-width: 720px) {
   header div {

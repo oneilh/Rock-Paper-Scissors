@@ -1,43 +1,44 @@
 import React, { useState } from "react";
-import rock from "./../../assets/fist-svgrepo-com.svg";
-import paper from "./../../assets/hand-svgrepo-com.svg";
-import scissors from "./../../assets/two-fingers-svgrepo-com.svg";
+
 
 const GameSelection = ({ playerPick }) => {
   const handleSelection = (e) => {
-    playerPick(e.target.id);
+    playerPick(e.currentTarget.id);
   };
 
   return (
     <div className="game">
       <section className="rocknpaper">
-        <img
-          src={rock}
-          alt=""
+        <button
           className="rock option"
           id="rock"
           tabIndex={1}
           onClick={handleSelection}
-        />
+          style={{ fontSize: "5rem", background: "transparent", border: "none", cursor: "pointer" }}
+        >
+          ✊
+        </button>
 
-        <img
-          src={paper}
-          alt=""
+        <button
           className="paper option"
           id="paper"
           tabIndex={1}
           onClick={handleSelection}
-        />
+          style={{ fontSize: "5rem", background: "transparent", border: "none", cursor: "pointer" }}
+        >
+          ✋
+        </button>
       </section>
 
-      <img
-        src={scissors}
-        alt=""
+      <button
         className="scissors option"
         id="scissors"
         tabIndex={1}
         onClick={handleSelection}
-      />
+        style={{ fontSize: "5rem", background: "transparent", border: "none", cursor: "pointer" }}
+      >
+        ✌️
+      </button>
     </div>
   );
 };

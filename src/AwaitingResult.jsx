@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./context/AppContext";
-import rock from "./assets/fist-svgrepo-com.svg";
-import paper from "./assets/hand-svgrepo-com.svg";
-import scissors from "./assets/two-fingers-svgrepo-com.svg";
+
 import { Link } from "react-router";
 
 const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
@@ -12,9 +10,9 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   const { player, computer } = pick;
   // Map choices to their corresponding images
   const optionsMap = {
-    rock: rock,
-    paper: paper,
-    scissors: scissors,
+    rock: "✊",
+    paper: "✋",
+    scissors: "✌️",
   };
 
   useEffect(() => {
@@ -39,8 +37,9 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
       <section className="selection_container">
         <section className="selection">
           <h3>You Picked</h3>
-          <img src={optionsMap[player]} alt="" className={`option ${player}`} />
-          {/*optionsMap Maps `player` to the correct image*/}
+          <div className={`option ${player}`} style={{ fontSize: "5rem" }}>
+            {optionsMap[player]}
+          </div>
         </section>
 
         {/* decision view for larger screen */}
@@ -56,12 +55,9 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         {/* selection-> computer */}
         <section className="selection">
           <h3>Computer Picked</h3>
-          <img
-            src={optionsMap[computer]}
-            alt=""
-            className={`option ${computer}`}
-          />
-          {/*optionsMap Maps `player` to the correct image*/}
+          <div className={`option ${computer}`} style={{ fontSize: "5rem" }}>
+            {optionsMap[computer]}
+          </div>
         </section>
       </section>
 

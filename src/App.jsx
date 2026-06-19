@@ -1,9 +1,8 @@
 import "./App.css";
 import Intro from "./pages/Intro/Intro";
-import Form from "./pages/Form";
 import Game from "./pages/Game/Game";
+import Layout from "./components/Layout";
 
-import AwaitingResult from "./AwaitingResult";
 import { Route, Routes } from "react-router";
 import { AppContext } from "./context/AppContext";
 
@@ -15,9 +14,10 @@ function App() {
   return (
     <AppContext.Provider value={{ appState, dispatch }}>
       <Routes>
-        <Route path="/" element={<Intro />} />
-        <Route path="register" element={<Form />} />
-        <Route path="game" element={<Game />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Intro />} />
+          <Route path="game" element={<Game />} />
+        </Route>
       </Routes>
     </AppContext.Provider>
   );

@@ -6,9 +6,11 @@ const ScoreBoard = () => {
   const { playerName, playerScore, computerScore } = appState;
   return (
     <header>
-      <h3>
-        rock <br /> paper <br /> scissors
-      </h3>
+      <div className="game-title">
+        <span>ROCK</span>
+        <span>PAPER</span>
+        <span>SCISSORS</span>
+      </div>
       <section>
         <div className="player">
           <p>{playerName}</p>

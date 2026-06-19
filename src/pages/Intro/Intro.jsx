@@ -1,14 +1,23 @@
+import { useState } from "react";
 import IntroBody from "./IntroBody";
 import appImg from "./../../assets/rock_papper_scissors.png";
-import NavBar from "./NavBar";
+import FormModal from "./FormModal";
 
-const Intro = ({ gamestart }) => {
+const Intro = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <main className="intro">
-      <NavBar />
-      <img src={appImg} alt="" className="app_img" style={{ height: "80%" }} />
-      <IntroBody gamestart={gamestart} />
-    </main>
+    <div className="intro">
+      <img 
+        src={appImg} 
+        alt="Rock Paper Scissors Hero Image" 
+        className="app_img" 
+        fetchpriority="high"
+        style={{ height: "80%" }} 
+      />
+      <IntroBody onStart={() => setIsModalOpen(true)} />
+      {isModalOpen && <FormModal onClose={() => setIsModalOpen(false)} />}
+    </div>
   );
 };
 
