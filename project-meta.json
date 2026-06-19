@@ -3,13 +3,9 @@
   "name": "Rock Paper Scissors",
   "description": "A modern, interactive frontend implementation of the classic game built with React.",
   "image": "/screenshots/image.png",
-  "githubUrl": "#",
-  "liveUrl": "#",
-  "tags": [
-    "React",
-    "CSS",
-    "Vite"
-  ],
+  "githubUrl": "https://github.com/oneilh/Rock-Paper-Scissors",
+  "liveUrl": "https://rock-paper-scissors-psi-ten.vercel.app/",
+  "tags": ["React", "CSS", "Vite"],
   "featured": false,
   "details": {
     "overview": "This application delivers a highly responsive, interactive gaming experience powered by a clean React component architecture. Leveraging Vite for optimized builds and lightning-fast HMR, it ensures a production-grade UI layer with robust client-side state management.",
