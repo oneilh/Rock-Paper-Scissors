@@ -1,3 +1,5 @@
+import { ACTIONS } from "./constants";
+
 export const initialState = {
   playerName: "Guest001",
   playerScore: 0,
@@ -8,11 +10,11 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "DRAW":
+    case ACTIONS.DRAW:
       return { ...state, roundResult: "It's a Draw 🤝" };
-    case "PLAYERNAME":
+    case ACTIONS.PLAYERNAME:
       return { ...state, playerName: action.payload.toUpperCase() };
-    case "PLAYERWIN":
+    case ACTIONS.PLAYERWIN:
       const updatedPlayerScore = state.playerScore + 1;
       return {
         ...state,
@@ -20,7 +22,7 @@ export const reducer = (state, action) => {
         seriesScore: updatedPlayerScore + state.computerScore,
         roundResult: "You Win 😎",
       };
-    case "COMPUTERWIN":
+    case ACTIONS.COMPUTERWIN:
       const updatedComputerScore = state.computerScore + 1;
       return {
         ...state,
@@ -28,7 +30,7 @@ export const reducer = (state, action) => {
         seriesScore: state.playerScore + updatedComputerScore,
         roundResult: "Computer Win 😔",
       };
-    case "RESET":
+    case ACTIONS.RESET:
       return {
         ...state,
         playerScore: 0,
