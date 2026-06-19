@@ -33,6 +33,7 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
   }
   const isPlayerWin = roundResult.includes("You Win");
   const isComputerWin = roundResult.includes("Computer Win");
+  const isDraw = roundResult.includes("Draw");
 
   return (
     <main className="result-container">
@@ -40,8 +41,10 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
       <section className="selection_container">
         <section className="selection">
           <h3>You Picked</h3>
-          <div className={`option ${player} ${isPlayerWin ? 'winner-glow' : ''} ${isComputerWin ? 'loser-dim' : ''}`}>
-            {optionsMap[player]}
+          <div className={`glass-btn ${isPlayerWin ? 'winner-glow' : ''} ${isComputerWin ? 'loser-dim' : ''} ${isDraw ? 'draw-glow' : ''}`}>
+            <div className={`option ${player}`}>
+              {optionsMap[player]}
+            </div>
           </div>
         </section>
 
@@ -58,8 +61,10 @@ const AwaitingResult = ({ pick, setShowResultBoard, showResultBoard }) => {
         {/* selection-> computer */}
         <section className="selection">
           <h3>Computer Picked</h3>
-          <div className={`option ${computer} ${isComputerWin ? 'winner-glow' : ''} ${isPlayerWin ? 'loser-dim' : ''}`}>
-            {optionsMap[computer]}
+          <div className={`glass-btn ${isComputerWin ? 'winner-glow' : ''} ${isPlayerWin ? 'loser-dim' : ''} ${isDraw ? 'draw-glow' : ''}`}>
+            <div className={`option ${computer}`}>
+              {optionsMap[computer]}
+            </div>
           </div>
         </section>
       </section>

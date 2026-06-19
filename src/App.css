@@ -280,6 +280,9 @@ header p {
   border-radius: 50%;
   width: 160px;
   height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .option {
@@ -341,18 +344,33 @@ header p {
   gap: 2rem;
 }
 
+@keyframes winner-pulse {
+  0% { transform: scale(1.2); box-shadow: 0 0 20px rgba(0, 255, 100, 0.4); }
+  50% { transform: scale(1.25); box-shadow: 0 0 40px rgba(0, 255, 100, 0.7); }
+  100% { transform: scale(1.2); box-shadow: 0 0 20px rgba(0, 255, 100, 0.4); }
+}
+
 .winner-glow {
   background: rgba(0, 255, 100, 0.2) !important;
   border-color: rgba(0, 255, 100, 0.5) !important;
-  transform: scale(1.2) !important;
-  box-shadow: 0 0 30px rgba(0, 255, 100, 0.5) !important;
+  animation: winner-pulse 1.5s infinite ease-in-out;
   filter: drop-shadow(0 0 10px rgba(0, 255, 100, 0.5)) !important;
   z-index: 10;
 }
 
 .loser-dim {
-  filter: grayscale(100%) opacity(30%) !important;
+  filter: grayscale(100%) opacity(40%) drop-shadow(0 5px 5px rgba(0,0,0,0.5)) !important;
   transform: scale(0.85) !important;
+  transition: all 0.5s ease;
+}
+
+.draw-glow {
+  background: rgba(255, 200, 0, 0.1) !important;
+  border-color: rgba(255, 200, 0, 0.5) !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.3) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 200, 0, 0.5)) !important;
+  z-index: 5;
 }
 
 .selection_container {
@@ -360,10 +378,6 @@ header p {
   display: flex;
   justify-content: center;
   gap: 6rem;
-}
-.selection_container .option:hover {
-  height: 100px;
-  width: 100px;
 }
 .selection_container section {
   display: flex;
@@ -553,10 +567,6 @@ header p {
   .selection_container .decision {
     display: none;
     background-color: red;
-  }
-  .selection_container .option:hover {
-    height: 40px;
-    width: 40px;
   }
 
   /* decision mobile */
