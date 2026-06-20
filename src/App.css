@@ -530,11 +530,29 @@ header p {
 
 
 @media only screen and (max-width: 720px) {
-  header div {
-    padding: 0 0.1rem;
+  header {
+    width: 95%;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .game-title {
+    font-size: 1.2rem;
+  }
+  header section {
+    gap: 0.5rem;
+  }
+  header section div {
+    min-width: 65px;
+    height: 65px;
+  }
+  header h2 {
+    font-size: 24px;
   }
   header p {
-    font-size: 16px;
+    font-size: 12px;
+  }
+  .colon {
+    font-size: 20px;
   }
   /* ======= Main application styles ========*/
   /* game */
